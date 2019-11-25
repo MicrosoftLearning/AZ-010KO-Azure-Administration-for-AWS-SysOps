@@ -1,11 +1,11 @@
-# Module: 00
-## Lab/Demo: 00
-### Task: 00
-#### Step: 00
+﻿# 모듈: 00
+## 랩/데모: 00
+### 태스크: 00
+#### 단계: 00
 
-Description of issue
+문제 설명
 
-Repro steps:
+재현 단계:
 
 1.
 1.
