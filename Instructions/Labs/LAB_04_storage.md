@@ -67,7 +67,7 @@ echo "추가되는 임의 문자열:  "$myRand
 my_resource_group=WestRG
 location=westus
 my_storage_account=weststore$myRand
-my_storage_sku=Standard_RAGRS # default
+my_storage_sku=Standard_RAGRS # 기본값
 my_storage_kind=StorageV2myRand
 my_access_tier=hot
 my_storage_encryption=blob
@@ -251,7 +251,7 @@ az storage blob download-batch -d $myDownloadPath -s $container_name
 4. download 디렉터리의 파일 목록 표시
 
 ```sh
-# list downloadfiles
+# downloadfiles 나열
 ls downloadfiles
 ```
 
