@@ -3,8 +3,9 @@
 ## 지침
 
 1. 아래 CLI 스크립트를 메모장 등의 편집기에 복사합니다.
-1. 위치 섹션의 제목은 `# ----실행 전에 다음 값 편집----`입니다.
-1. 값이 사용자의 환경을 나타내도록 편집한 다음 파일을 로컬에 저장합니다.
+      1. 위치 섹션의 제목은 `# ----실행 전에 다음 값 편집----`입니다.
+      1. 암호를 편집합니다. 그러지 않으면 **오류**가 발생합니다. 그리고 CLI 명령 파일을 저장합니다.
+      1. 파일을 로컬에 저장합니다.
 1. Azure Portal에 로그인하여 Bash Cloud Shell을 엽니다.
 1. 종속성이 있는지 확인합니다(스크립트 맨 위의 주석 참조).
 1. 로컬 파일에서 CLI 스크립트를 복사하여 Bash Cloud Shell에 붙여넣습니다.
@@ -26,10 +27,11 @@
 # ----------시작----------
 
 # ----실행 전에 다음 값을 고유하게 편집----
-adminUserName='azuser'
-adminPassword='UniqueP@$$w0rd-Here'
+#----암호의 선행 "!"를 제거하지 않으면 오류 발생----
+adminPassword=!'UniqueP@$$w0rd-Here'
 
 # ----변수 설정----
+adminUserName='azuser'
 resourceGroupName='WestRG'
 location='westus'
 vmName='WestWinVM'
@@ -53,6 +55,9 @@ az vm create --name $vmName --resource-group $resourceGroupName \
   --size $vmSize \
   --availability-set $availabilitySet
 
+# VM을 잠시 기다립니다.
+절전 60
+  
 # ----포트 열기----
 az vm open-port -g WestRG -n $vmName --port 80 --priority 1500
 az vm open-port -g WestRG -n $vmName --port 3389 --priority 2000
@@ -87,7 +92,6 @@ az vm create \
 --vnet-name WestVNet \
 --subnet WestSubnet1 \
 --availability-set WestAS \
---size 'Standard_D1' \
 --location westus \
 --name WestDebianVM \
 --generate-ssh-keys

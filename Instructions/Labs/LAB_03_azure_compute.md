@@ -34,7 +34,7 @@ lab:
     1. 모듈 1: Azure 관리 - **랩: 리소스 그룹 만들기**. EastRG 및 WestRG 리소스 그룹을 구성한 상태여야 합니다.
     1. 모듈 2: Azure 네트워킹 - **랩: 가상 네트워크 및 피어링**. 서브넷이 포함된 VNet과 피어링을 구성한 상태여야 합니다.
 
-### 연습 1: 가용성 집합 내에서 구성된 VM 만들기
+## 연습 1: 가용성 집합 내에서 구성된 VM 만들기
 
 이 연습의 주요 태스크는 다음과 같습니다.
 
@@ -42,7 +42,7 @@ lab:
 1. Windows 가상 머신 만들기
 1. Linux Debian 가상 머신 만들기
 
-#### 태스크 1: Windows 가상 머신 만들기
+### 연습 1 - 태스크 1: Windows 가상 머신 만들기
 
 * 가용성 집합 만들기
 * Windows Server 2016 DataCenter VM 만들기
@@ -52,13 +52,13 @@ lab:
 
 1. **Cloud Shell** 명령 프롬프트에 다음 명령을 입력하고 **Enter** 키를 눌러 다음 스크립트에서 사용할 변수를 준비합니다.
 
-> **참고**: 고유한 암호를 생성하여 적어 두세요.
+> **참고**: 고유한 암호를 만들고 기록해 둡니다. 이때 암호의 선행 "!"를 제거하지 않으면 오류가 발생합니다.
 
 ```sh
 resourceGroupName='WestRG'
 location='westus'
 adminUserName='azuser'
-adminPassword='UniqueP@$$w0rd-Here' # 고유한 값을 만듭니다
+adminPassword=!'UniqueP@$$w0rd-Here' # "!"를 제거하지 않으면 오류 발생 + 암호는 고유해야 함
 vmName='WestWinVM'
 vmSize='Standard_D1'
 availabilitySet='WestAS'
@@ -104,7 +104,7 @@ az vm open-port -g WestRG -n $vmName --port 3389 --priority 2000
 2. WestWinVM을 포함한 리소스를 확인합니다.
 3. Azure Advisor를 시작하여 권장 사항을 살펴봅니다.
 
-#### 태스크 2: WestWinVM을 웹 서버로 구성하고 Ping 허용
+### 태스크 2: WestWinVM을 웹 서버로 구성하고 Ping 허용
 
 **ICMPv4-In 허용(Bash CLI에서 PowerShell 실행)**
 
@@ -144,7 +144,7 @@ az vm show -d -g $resourceGroupName -n $vmName --query publicIps -o tsv
 
 2. 결과로 반환된 IP 주소를 웹 브라우저에 붙여넣어 IIS 기본 페이지가 있는지 확인합니다.
 
-#### 태스크 3: DNS로 구성된 Debian 가상 머신 만들기
+### 태스크 3: DNS로 구성된 Debian 가상 머신 만들기
 
 Cloud Shell에서 Debian 가상 서버 2개를 만들고 SSH를 사용하여 서버에 연결
 
@@ -201,7 +201,6 @@ az vm availability-set create --name EastAS --resource-group EastRG
 ```sh
 az vm create \
 --image credativ:Debian:8:latest \
---size 'Standard_D1' \
 --admin-username azuser \
 --resource-group EastRG \
 --vnet-name EastVNet \
@@ -243,7 +242,7 @@ az vm get-instance-view --name WestDebianVM --resource-group WestRG --query inst
 az vm get-instance-view --name EastDebianVM --resource-group EastRG --query instanceView.statuses[1] --output table
 ```
 
-#### 태스크 4: SSH를 사용해 WestDebianVM에 연결한 다음 WestWinVM의 ping 테스트 실행
+### 태스크 4: SSH를 사용해 WestDebianVM에 연결한 다음 WestWinVM의 ping 테스트 실행
 
 **West 리소스 그룹의 Debian 가상 머신에 연결**
 
@@ -270,6 +269,7 @@ ssh azuser@<West Debian VM의 공용 IP 주소>
 > *두 VM은 같은 **프라이빗** VNet에 있으므로 ping은 정상적으로 실행됩니다.*
 
 1. WestWinVM IP 주소를 사용하여 다음 명령을 편집한 다음 Cloud Shell SSH 세션을 입력하여 WestWinVM에 대해 ping을 실행합니다.
+1. **`ctrl+c`** 를 통해 Bash에서 ping 종료(ssh 세션)
 
 ```sh
 ping <Windows 서버의 프라이빗 IP 주소>
@@ -280,6 +280,8 @@ ping <Windows 서버의 프라이빗 IP 주소>
 1. EastDebianVM IP 주소를 사용하여 다음 명령을 편집한 다음 Cloud Shell SSH 세션을 입력하여 WestWinVM에 대해 ping을 실행합니다.
 
 > *이전에 VNet 피어링을 구성했으므로 ping은 정상적으로 실행됩니다.*
+
+1. **`ctrl+c`** 를 통해 Bash에서 ping 종료(ssh 세션)
 
 ```sh
 ping <eastdebianvm의 프라이빗 IP 주소>
@@ -295,7 +297,7 @@ ping <eastdebianvm의 프라이빗 IP 주소>
 1. 자동 확장 및 규모 감축 규칙 만들기
 1. Ubuntu 확장 집합 테스트(선택 사항)
 
-#### 태스크 1: Ubuntu 확장 집합 만들기
+#### 연습 2 - 태스크 1: Ubuntu 확장 집합 만들기
 
 **확장 집합 리소스 그룹 만들기**
 
@@ -369,7 +371,7 @@ az monitor autoscale rule create \
 
 > *참고: "규모 감축"은 짧으면 2분 이내에도 수행될 수 있으므로 처음 몇 분 동안에는 아래 결과가 달라질 수 있습니다.*
 
-#### 태스크 2: Ubuntu 확장 집합 테스트(선택 태스크)
+### 태스크 2: Ubuntu 확장 집합 테스트(선택 태스크)
 
 > 이 태스크에서는 확장 집합 동작을 시연하기 위한 테스트로 서버에서 CPU 로드를 생성합니다.
 

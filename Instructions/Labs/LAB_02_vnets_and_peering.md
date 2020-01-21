@@ -31,7 +31,7 @@ lab:
 
 1. 에서 구성한 EastRG 및 WestRG 리소스 그룹 **모듈 1: Azure 관리, 랩: 리소스 그룹 만들기**.
 
-### 연습 1: 서브넷이 포함된 가상 네트워크 만들기
+## 연습 1: 서브넷이 포함된 가상 네트워크 만들기
 
 이 연습의 주요 태스크는 다음과 같습니다.
 
@@ -40,7 +40,7 @@ lab:
 1. 서브넷이 포함된 East VNet 만들기
 1. East 네트워크 및 서브넷이 생성되었는지 확인
 
-#### 태스크 1: 서브넷이 포함된 West VNet 만들기
+### 연습 1 - 태스크 1: 서브넷이 포함된 West VNet 만들기
 
 1. **Cloud Shell** 명령 프롬프트에서 다음 명령을 입력하여 WestSubNet1 서브넷이 포함된 WestVNet 가상 네트워크를 만듭니다.
 
@@ -65,7 +65,7 @@ az network vnet list --output table
 az network vnet subnet list --resource-group WestRG --vnet-name WestVNet --output table
 ```
 
-#### 태스크 2: 서브넷이 포함된 East VNet 만들기
+### 태스크 2: 서브넷이 포함된 East VNet 만들기
 
 1. **Cloud Shell** 명령 프롬프트에서 다음 명령을 입력하여 EastSubNet1 서브넷이 포함된 EastVNet 가상 네트워크를 만듭니다.
 
@@ -101,7 +101,7 @@ az network vnet list --output table
 az network vnet subnet list --resource-group EastRG --vnet-name EastVNet --output table
 ```
 
-#### 태스크 3: West에서 East로의 간 피어링 네트워크 만들기
+### 태스크 3: West에서 East로의 간 피어링 네트워크 만들기
 
 1. `remote-vnet-id` CLI 명령을 사용하여 West VNet과 East VNet 간에 피어핑을 만듭니다.
 1. **Cloud Shell** 명령 프롬프트에서 다음 명령을 입력하여 EastVNet ID를 변수에 캡처합니다.
@@ -137,7 +137,7 @@ az network vnet peering list \
   --output table
   ```
 
-#### 태스크 4: East에서 West로의 간 피어링 네트워크 만들기
+### 태스크 4: East에서 West로의 간 피어링 네트워크 만들기
 
 1. WestVNet ID를 변수에 캡처합니다.
 

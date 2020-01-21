@@ -33,7 +33,7 @@ Azure Cloud Shell CLI 소개
 
 1. 과정을 진행하는 강사가 제시하는 단계에 따라 Azure Portal을 사용하여 이 과정에 사용할 Azure 계정을 구성합니다.
 
-### 연습 1: Cloud Shell을 사용하여 Azure CLI를 시작한 다음 리소스 그룹 2개를 만듭니다.
+## 연습 1: Cloud Shell을 사용하여 Azure CLI를 시작한 다음 리소스 그룹 2개를 만듭니다.
 
 이 연습의 주요 태스크는 다음과 같습니다.
 
@@ -42,7 +42,7 @@ Azure Cloud Shell CLI 소개
 1. CLI 명령을 사용하여 WestRG 리소스 그룹 만들기
 1. CLI 명령을 사용하여 EastRG 리소스 그룹 만들기
 
-#### 태스크 1: Cloud Shell 열기
+#### 연습 1 - 태스크 1: Cloud Shell 열기
 
 **Azure Cloud Shell에서 구독 설정**
 
@@ -68,7 +68,7 @@ az account list --output table
 
 4. 구독 목록을 검토하여 적절한 구독에 "default `true`" 레이블이 지정되어 있는지 확인합니다.
 
-#### 태스크 2: CLI를 사용하여 WestRG 리소스 그룹 만들기
+### 태스크 2: CLI를 사용하여 WestRG 리소스 그룹 만들기
 
 1. **Cloud Shell** 명령 프롬프트에서 다음 명령을 입력하여 westus 지역에서 WestRG 리소스 그룹을 만듭니다.
 
@@ -84,7 +84,7 @@ az group list --output table
 
 3. 새로 만든 WestRG가 목록에 포함되어 있는지 확인합니다.
 
-#### 태스크 3: CLI를 사용하여 EastRG 리소스 그룹 만들기
+### 태스크 3: CLI를 사용하여 EastRG 리소스 그룹 만들기
 
 1. **Cloud Shell** 명령 프롬프트에서 다음 명령을 입력하여 eastus 지역에서 EastRG 리소스 그룹을 만듭니다.
 
