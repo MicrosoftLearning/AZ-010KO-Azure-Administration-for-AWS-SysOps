@@ -1,4 +1,4 @@
-﻿---
+---
 lab:
     title: 'Azure VM 및 확장 집합'
     module: '모듈 3: Azure 컴퓨팅'
