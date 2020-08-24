@@ -1,4 +1,4 @@
-﻿---
+---
 lab:
     title: 'Blob, 보안 액세스 스토리지, 서비스 엔드포인트 및 File Storage'
     module: '모듈 4: Azure Storage'
